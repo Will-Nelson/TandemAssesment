@@ -1,0 +1,13 @@
+{
+  "profiles": {
+    "TandemIntegrationTest": {
+      "commandName": "Project"
+    },
+    "Docker (1)": {
+      "commandName": "docker-compose -f .\\docker-compose.yml",
+      "environmentVariables": {
+        "REDISSERVER": "redis_image:6379"
+      }
+    }
+  }
+}

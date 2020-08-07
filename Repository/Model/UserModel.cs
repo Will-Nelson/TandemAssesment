@@ -1,13 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using System.Text;
 
-namespace TandemAssesment.Model
+namespace Repository.Model
 {
-    public class UserSaveModel
+    public class UserModel
     {
-       
         public string FirstName { get; set; }
         public string MiddleName { get; set; }
         public string LastName { get; set; }

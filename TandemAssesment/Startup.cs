@@ -12,6 +12,17 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
+using Repository.Interface;
+using TandemAssesment.Factory;
+using TandemAssesment.Interface;
+
+using StackExchange.Redis;
+using TandemAssesment.Service;
+using TandemAssesment.Model;
+using Repository.Model;
+using TandemAssesment.Validation;
+using FluentValidation;
+
 
 namespace TandemAssesment
 {
@@ -29,7 +40,22 @@ namespace TandemAssesment
         {
             services.AddControllers();
             services.AddAutoMapper(typeof(Startup));
-            services.AddSwaggerGen(c => c.SwaggerDoc("v1", new OpenApiInfo { Title = "Tandem API", Version = "V1" }));
+            services.AddScoped<IRepository, Repository.Repository>();
+            services.AddScoped<IRepositoryService, RepositoryService>(); 
+            services.AddTransient<IClientUserFactory, ClientModelFactory>();
+            services.AddTransient<IRepositoryUserFactory, RepositoryModelFactory>();
+            services.AddTransient<IValidator<UserSaveModel>, UserValidation>();
+            string serverEndPoint = String.Empty;
+            serverEndPoint = Environment.GetEnvironmentVariable("REDISSERVER");
+ 
+            services.AddStackExchangeRedisCache(option =>
+            {
+                option.Configuration = Environment.GetEnvironmentVariable("REDISSERVER");
+                
+            });
+            
+            services.AddSwaggerGen(c => c.SwaggerDoc("v1", new OpenApiInfo { Title = "User Api", Version = "v1" }));
+            
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -39,6 +65,8 @@ namespace TandemAssesment
             {
                 app.UseDeveloperExceptionPage();
             }
+
+            app.UseSwagger();
 
             app.UseHttpsRedirection();
 
@@ -50,6 +78,9 @@ namespace TandemAssesment
             {
                 endpoints.MapControllers();
             });
+            app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "User Api"));
+
+            ;
         }
     }
 }

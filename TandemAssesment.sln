@@ -5,7 +5,11 @@ VisualStudioVersion = 16.0.30204.135
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TandemAssesment", "TandemAssesment\TandemAssesment.csproj", "{65DC041A-054A-44A1-9D8F-EE54B001FE2B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Repository", "Repository\Repository.csproj", "{066E42B1-218C-4BDB-9EAB-37E55344D8BA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Repository", "Repository\Repository.csproj", "{066E42B1-218C-4BDB-9EAB-37E55344D8BA}"
+EndProject
+Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{36509838-9ABC-47E3-B26F-675F8D5C1A30}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TandemIntegrationTest", "TandemIntegrationTest\TandemIntegrationTest.csproj", "{2BBCCD64-FA82-41F5-BB9C-9180BC0D4ECD}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +25,14 @@ Global
 		{066E42B1-218C-4BDB-9EAB-37E55344D8BA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{066E42B1-218C-4BDB-9EAB-37E55344D8BA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{066E42B1-218C-4BDB-9EAB-37E55344D8BA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{36509838-9ABC-47E3-B26F-675F8D5C1A30}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{36509838-9ABC-47E3-B26F-675F8D5C1A30}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{36509838-9ABC-47E3-B26F-675F8D5C1A30}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{36509838-9ABC-47E3-B26F-675F8D5C1A30}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2BBCCD64-FA82-41F5-BB9C-9180BC0D4ECD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2BBCCD64-FA82-41F5-BB9C-9180BC0D4ECD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2BBCCD64-FA82-41F5-BB9C-9180BC0D4ECD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2BBCCD64-FA82-41F5-BB9C-9180BC0D4ECD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

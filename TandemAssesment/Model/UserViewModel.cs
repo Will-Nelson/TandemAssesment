@@ -7,9 +7,8 @@ namespace TandemAssesment.Model
 {
     public class UserViewModel
     {
-        public int id { get; set; }
-        public string fullName { get; set; }
-        public string phoneNumber { get; set; }
-        public string emailAddress { get; set; }
+        public string FullName { get; set; }
+        public string PhoneNumber { get; set; }
+        public string EmailAddress { get; set; }
     }
 }

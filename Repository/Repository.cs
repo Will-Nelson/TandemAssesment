@@ -3,24 +3,41 @@ using Repository.Model;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using StackExchange.Redis;
+using Microsoft.Extensions.Caching.Distributed;
+using System.Text;
+using System.Reflection.Metadata.Ecma335;
+using System.Text.Json.Serialization;
+using System.Text.Json;
 
 namespace Repository
 {
     public class Repository : IRepository
     {
-        public Task<bool> AddUser(User user)
+        private IDistributedCache _cache;
+        public Repository(IDistributedCache idistributedcache)
         {
-            throw new NotImplementedException();
+            _cache = idistributedcache;
+         }
+        public async Task<bool> AddUser(UserModel user)
+        {
+            await _cache.SetStringAsync(user.EmailAddress, JsonSerializer.Serialize<UserModel>(user));
+            return true;
         }
 
-        public Task<IList<User>> GetToUsers()
+        public async Task<UserModel> GetUser(string email)
         {
-            throw new NotImplementedException();
+            var userdata = await _cache.GetAsync(email);
+            if (userdata != null) 
+            { 
+                var user = Encoding.ASCII.GetString(userdata);
+                return JsonSerializer.Deserialize<UserModel>(user);
+            }
+            else
+            {
+                return null;
+            }
         }
-
-        public Task<bool> UpdateUser(User user)
-        {
-            throw new NotImplementedException();
-        }
+      
     }
 }
